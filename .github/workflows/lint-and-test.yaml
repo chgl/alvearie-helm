@@ -30,6 +30,11 @@ jobs:
       - name: run pre-commit
         run: pre-commit run --all-files --show-diff-on-failure
 
+      - name: run GitHub super-linter
+        uses: github/super-linter@v4
+        env:
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   lint:
     runs-on: ubuntu-20.04
     container: quay.io/helmpack/chart-testing:v3.4.0
